@@ -1,9 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>我的页面</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SS的作品集 | 首页</title>
+    <style>
+        /* 全局样式，贴合1920*1080尺寸，黑色高级风格 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            width: 1920px; /* 固定首页宽度，贴合需求 */
+ height: 1080px; /* 固定首页高度 */
+            margin: 0 auto; /* 水平居中，适配不同电脑屏幕 */
+            background-color: #000; /* 纯黑底色，凸显高级感 */
+            color: #fff; /* 白色文字，对比清晰，易读性强 */
+            overflow: hidden; /* 隐藏溢出内容，保持页面整洁 */
+            position: relative;
+        }
+
+        /* 顶部导航栏，简约大气 */
+        .header {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 细边框，不突兀 */
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+        }
+
+        .logo {
+            font-size: 32px;
+ font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+ .nav-list {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-item {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* 核心内容区，居中布局 */
+        .container {
+            width: 100%;
+            height: 100%;
+ display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 40px; /* 预留顶部导航高度 */
+            position: relative;
+ }
+
+        /* 装饰元素，提升高级感（不突兀，贴合风格） */
+        .decor {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 0;
+        }
+
+        .decor1 {
+            top: 150px;
+            left: 200px;
+        }
+
+        .decor2 {
+ bottom: 150px;
+            right: 200px;
+        }
+
+        /* 标题样式，突出主题 */
+        .title {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            z-index: 1;
+        }
+
+        /* 副标题，丰富内容 */
+        .subtitle {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 100px;
+            z-index: 1;
+ }
+
+        /* 分类导航样式，简洁大气，延续原风格 */
+        .category-list {
+            display: flex;
+ gap: 80px;
+            flex-wrap: nowrap;
+            z-index: 1;
+        }
+
+        .category-item {
+            font-size: 36px;
+            font-weight: 500;
+            padding: 20px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #fff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* hover效果，提升交互体验 */
+        .category-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        /* 底部信息，完善页面 */
+        .footer {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 999;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* 响应式适配，防止小屏幕错乱 */
+        @media (max-width: 1920px) {
+            body {
+                width: 100%;
+                height: 100vh;
+            }
+            .title {
+                font-size: 60px;
+            }
+            .category-item {
+                font-size: 32px;
+                padding: 15px 30px;
+            }
+            .category-list {
+                gap: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>GitHub Pages 运行成功！</h1>
+<!-- 顶部导航 -->
+    <header class="header">
+        <div class="logo">SS PORTFOLIO</div>
+<ul class="nav-list">
+ <li class="nav-item">首页</li>
+            <li class="nav-item">关于我</li>
+            <li class="nav-item">联系方式</li>
+        </ul>
+</header>
+
+<!-- 核心内容区 -->
+    <div class="container">
+<!-- 装饰元素 -->
+        <div class="decor decor1"></div>
+        <div class="decor decor2"></div>
+
+<!-- 标题区域 -->
+<h1 class="title">SS的作品集</h1>
+        <p class="subtitle">专注细节，打造有质感的设计作品</p>
+
+<!-- 分类导航 -->
+        <ul class="category-list">
+            <li class="category-item">详情页</li>
+            <li class="category-item">主页</li>
+            <li class="category-item">促销页面</li>
+            <li class="category-item">其它</li>
+        </ul>
+    </div>
+
+<!-- 底部信息 -->
+    <footer class="footer">
+        <p class="footer-text">© 2026 SS 作品集 | 版权所有</p>
+    </footer>
 </body>
 </html>
+```
+### 页面亮点
+1.  风格统一：延续原黑色高级风，无多余色彩，凸显简约质感，贴合作品集调性；
+2.  布局完整：新增顶部导航（首页、关于我、联系方式）和底部版权信息，比原页面更具完整性；
+3.  细节优化：增加简约装饰元素、hover动态效果升级，提升页面层次感和交互体验；
+4.  适配性强：固定1920*1080尺寸，同时添加响应式适配，小屏幕也能正常显示。
